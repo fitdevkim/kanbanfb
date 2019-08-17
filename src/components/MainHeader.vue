@@ -1,7 +1,7 @@
 <template>
   <div class="main-header">
     <h1>Simple Kanban App</h1>
-    <h3>Built using Vue & Firebase</h3>
+    <h3>Built using Vue &#38; Firebase</h3>
     <input type="text" placeholder="Input Task Here" v-model="taskName" />
     <input type="submit" @click="sendItem" />
   </div>

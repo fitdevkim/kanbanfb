@@ -31,32 +31,33 @@ const taskData = [
     data: []
   }
 ];
-var leadsRef = database.ref("/");
-leadsRef.on("value", function(snapshot) {
+var fb = database.ref("/");
+fb.on("value", tasks => {
   taskData[0].data = [];
   taskData[1].data = [];
   taskData[2].data = [];
   taskData[3].data = [];
-  snapshot.forEach(function(childSnapshot) {
-    if (childSnapshot.val().status === "Pre-Log") {
-      const obj = childSnapshot.val();
-      obj.id = childSnapshot.key;
+  tasks.forEach(task => {
+    if (task.val().status === "Pre-Log") {
+      const obj = task.val();
+      obj.id = task.key;
       taskData[0].data.push(obj);
-    } else if (childSnapshot.val().status === "To-Do") {
-      const obj = childSnapshot.val();
-      obj.id = childSnapshot.key;
+    } else if (task.val().status === "To-Do") {
+      const obj = task.val();
+      obj.id = task.key;
       taskData[1].data.push(obj);
-    } else if (childSnapshot.val().status === "On-Going") {
-      const obj = childSnapshot.val();
-      obj.id = childSnapshot.key;
+    } else if (task.val().status === "On-Going") {
+      const obj = task.val();
+      obj.id = task.key;
       taskData[2].data.push(obj);
     } else {
-      const obj = childSnapshot.val();
-      obj.id = childSnapshot.key;
+      const obj = task.val();
+      obj.id = task.key;
       taskData[3].data.push(obj);
     }
   });
 });
+
 export default {
   name: "home",
   components: {
@@ -71,7 +72,7 @@ export default {
 };
 </script>
 
-  <style>
+<style>
 .container-card {
   margin-top: 30px;
   padding-top: 5%;
@@ -84,7 +85,6 @@ export default {
   grid-gap: 20px;
 }
 .container {
-  /* background-color: #f6f7f9; */
   background-color: #f6f7f9;
   width: 100%;
   min-height: 675px;

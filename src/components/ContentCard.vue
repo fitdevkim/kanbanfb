@@ -3,7 +3,7 @@
     <h2>{{item.title}}</h2>
     <div class="container-button">
       <div>
-        <h4 @click="actionOne" class="success">{{buttonOne}}</h4>
+        <h4 @click="actionOne" v-if="buttonOne" class="success">{{buttonOne}}</h4>
       </div>
 
       <div>
@@ -52,14 +52,14 @@ export default {
       this.buttonOne = "To-Do";
       this.buttonTwo = null;
     } else if (this.name === "To-Do") {
-      this.buttonOne = "Pre-Log";
-      this.buttonTwo = "On-Going";
+      this.buttonOne = "On-Going";
+      this.buttonTwo = "Pre-Log";
     } else if (this.name === "On-Going") {
       this.buttonOne = "Finished";
       this.buttonTwo = "To-Do";
     } else if (this.name === "Finished") {
-      this.buttonOne = "On-Going";
-      this.buttonTwo = null;
+      this.buttonOne = null;
+      this.buttonTwo = "On-Going";
     }
   }
 };
@@ -100,7 +100,15 @@ export default {
   border-radius: 5px;
 }
 h4.danger {
-  background-color: lightcoral;
+  background-color: #f18484;
+  color: #fff;
+}
+h4.success {
+  background-color: #5cb85c;
+  color: #fff;
+}
+h4.light {
+  background-color: #a3a3a3;
   color: #fff;
 }
 </style>

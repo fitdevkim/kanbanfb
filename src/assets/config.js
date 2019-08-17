@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 
-// firebase init goes here
+// Firebase Config
 const config = {
   apiKey: 'AIzaSyDPnD_rPSt5FN8VoPoulfgTBIKsmk0sfQk',
   authDomain: 'kanbanfs.firebaseapp.com',
@@ -10,6 +10,7 @@ const config = {
   messagingSenderId: '797965086351',
   appId: '1:797965086351:web:7da921e9eb09b5ba'
 };
+// Firebase Init
 const db = firebase.initializeApp(config);
 
 export default db.database();
